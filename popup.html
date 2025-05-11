@@ -1,16 +1,29 @@
-<h1>Catify</h1>
-<img src="img/cat.jpg">
-<p>Sometimes images are stressful. Wouldn't it be better if we got rid of them?</p>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>EphWrite</title>
+  <style>
+    body { font-family: Arial; padding: 10px; width: 300px; }
+    textarea { width: 100%; height: 80px; margin-top: 5px; }
+    select { width: 100%; margin-top: 10px; }
+    .citation { font-size: 12px; color: #555; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <h2>EphWrite</h2>
 
-<a href="https://www.loc.gov/resource/thc.5a36851/" target="_blank">
-    <button>Curious about this cat?</button>
-</a>
+  <label for="style">Citation Style:</label>
+  <select id="style">
+    <option value="mla">MLA</option>
+    <option value="apa">APA</option>
+  </select>
 
-<style>
-    h1{
-        text-align: center;
-        font-family: cursive;
-    }
-</style>
+  <div id="citation" class="citation"></div>
 
-<script src="scripts/popup.js"></script>
+  <label for="notes">Your Notes:</label>
+  <textarea id="notes"></textarea>
+  <button id="save">Save Note</button>
+
+  <script src="scripts/popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+    "manifest_version": 3,
+    "name": "Catify the World",
+    "description": "This extension changes all images to photos of cats.",
+    "version": "1.0",
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": {
+        "16": "img/cat16.png",
+        "32": "img/cat32.png",
+        "48": "img/cat48.png",
+        "128": "img/cat128.png"
+        }
+    },
+    "content_scripts": [
+        {
+          "js": ["scripts/content.js"],
+          "matches": ["<all_urls>"]
+        }
+      ]
+  }

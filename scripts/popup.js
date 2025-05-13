@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const citationBox = document.getElementById("citation");
   const styleSelect = document.getElementById("style");
   const notesBox = document.getElementById("notes");
+  const saveFeedback = document.getElementById("saveFeedback");
 
   let authorName = "";
   let publishDate = null;
@@ -125,10 +126,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     if (style === "apa" && !publishDate) {
       citationBox.innerHTML += `<div style="color: red; font-size: 11px; margin-top: 4px;">
-    Warning: No publication date found. Using access date instead.
-  </div>`;
+        Warning: No publication date found. Using access date instead.
+      </div>`;
     }
-
   }
 
   chrome.scripting.executeScript({
@@ -168,7 +168,12 @@ document.addEventListener("DOMContentLoaded", async () => {
   document.getElementById("save").addEventListener("click", () => {
     const note = notesBox.value;
     chrome.storage.sync.set({ [url]: note }, () => {
-      alert("Note saved!");
+      if (saveFeedback) {
+        saveFeedback.style.display = "block";
+        setTimeout(() => {
+          saveFeedback.style.display = "none";
+        }, 1200);
+      }
     });
   });
 
@@ -210,5 +215,19 @@ document.addEventListener("DOMContentLoaded", async () => {
     tabCitations.classList.remove("active");
     viewCitations.style.display = "none";
     viewNotes.style.display = "block";
+  });
+
+  // Dynamically adjust font size to match host page
+  chrome.scripting.executeScript({
+    target: { tabId: tab.id },
+    func: () => {
+      const body = document.body;
+      const style = window.getComputedStyle(body);
+      return style.fontSize;
+    }
+  }, (results) => {
+    if (results && results[0] && results[0].result) {
+      document.body.style.fontSize = results[0].result;
+    }
   });
 });

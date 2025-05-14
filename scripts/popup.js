@@ -217,7 +217,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     viewNotes.style.display = "block";
   });
 
-  // Dynamically adjust font size to match host page
   chrome.scripting.executeScript({
     target: { tabId: tab.id },
     func: () => {

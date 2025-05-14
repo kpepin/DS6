@@ -2,7 +2,7 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    width: 340px;
+    width: 400px;
     background-color: white;
     border: 1px solid #ccc;
 }
@@ -71,13 +71,14 @@ select {
 }
 
 textarea {
-    width: 100%;
+    width: 95.5%;
     height: 80px;
     background-color: #fef3d9;
     border: 1px solid #e5d3a3;
     padding: 6px;
     font-size: 13px;
     resize: none;
+    font-family: 'Arial', sans-serif;
 }
 
 .save-button {
